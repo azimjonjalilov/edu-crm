@@ -1,5 +1,29 @@
+:root {
+  --primary-clr: #ffffff;
+  --secondary-clr: #000000;
+  --success-clr: #35de46;
+  --success-h-clr: #27cf38;
+  --info-clr: #155fbf;
+  --danger-clr: #db4848;
+  --radius: 8px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* general style */
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  outline: none;
+  background: none;
 }

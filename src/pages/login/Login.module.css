@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  padding: 40px 80px;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid var(--secondary-clr);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
