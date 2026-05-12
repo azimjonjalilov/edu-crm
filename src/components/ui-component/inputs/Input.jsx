@@ -47,3 +47,39 @@ export const InputEmail = ({
     </div>
   );
 };
+
+export const InputSearch = ({
+  placeholder = "",
+  value,
+  setValue = function () {},
+}) => {
+  return (
+    <input
+      className={styles.search}
+      type="search"
+      placeholder={placeholder}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+};
+
+export const InputText = ({
+  label = "",
+  placeholder = "",
+  value,
+  setValue = function () {},
+}) => {
+  return (
+    <div className={styles.text}>
+      <label htmlFor={label}>{label}</label>
+      <input
+        type="text"
+        placeholder={placeholder}
+        id={label}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </div>
+  );
+};

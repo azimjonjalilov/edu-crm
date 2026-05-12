@@ -14,3 +14,41 @@
     background-color: var(--success-clr);
   }
 }
+
+.danger {
+  min-width: 120px;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  background-color: var(--danger-clr);
+  font-size: 18px;
+  color: var(--primary-clr);
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--danger-h-clr);
+  }
+
+  &:active {
+    background-color: var(--danger-clr);
+  }
+}
+
+.info {
+  min-width: 120px;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  background-color: var(--info-clr);
+  color: var(--primary-clr);
+
+  font-size: 18px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--info-h-clr);
+  }
+
+  &:active {
+    background-color: var(--info-clr);
+  }
+}

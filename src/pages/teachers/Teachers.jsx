@@ -1,7 +1,9 @@
+import Header from "../../components/header/Header";
+
 const Teachers = () => {
   return (
     <div>
-      <h1>Teachers</h1>
+      <Header />
     </div>
   );
 };

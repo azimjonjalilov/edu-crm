@@ -1,0 +1,24 @@
+.container {
+  padding: 40px 50px;
+  width: max-content;
+  border-radius: var(--radius);
+  border: 2px solid var(--secondary-clr);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  h1 {
+    width: 60%;
+    font-size: 42px;
+    text-align: center;
+    font-family: cursive;
+  }
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

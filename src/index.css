@@ -4,7 +4,9 @@
   --success-clr: #35de46;
   --success-h-clr: #27cf38;
   --info-clr: #155fbf;
-  --danger-clr: #db4848;
+  --info-h-clr: #216dd1;
+  --danger-clr: #ea6767;
+  --danger-h-clr: #db5b5b;
   --radius: 8px;
 }
 

@@ -1,7 +1,9 @@
+import Header from "../../components/header/Header";
+
 const Groups = () => {
   return (
     <div>
-      <h1>Groups</h1>
+      <Header placeholder="search by name" />
     </div>
   );
 };
