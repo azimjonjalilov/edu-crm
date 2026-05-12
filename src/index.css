@@ -14,6 +14,9 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #111827;
+}
 /* general style */
 
 button {
@@ -26,4 +29,14 @@ input {
   border: none;
   outline: none;
   background: none;
+}
+
+ol,
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-clr);
 }

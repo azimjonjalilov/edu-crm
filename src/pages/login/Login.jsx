@@ -6,10 +6,13 @@ import {
   InputPassword,
   InputEmail,
 } from "../../components/ui-component/inputs/Input";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,6 +27,7 @@ const Login = () => {
 
     setEmail("");
     setPassword("");
+    navigate("/dashboard");
   }
 
   return (
