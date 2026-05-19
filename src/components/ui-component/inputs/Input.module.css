@@ -68,3 +68,44 @@
   font-size: 18px;
   font-family: sans-serif;
 }
+
+.selectOptions {
+  width: 100%;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--secondary-clr);
+    background-color: var(--primary-clr);
+    font-size: 18px;
+    font-family: sans-serif;
+  }
+
+  ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #d4cccc;
+    border-radius: var(--radius);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+
+    li {
+      padding: 8px 10px;
+      border-bottom: 1px solid grey;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: aliceblue;
+      }
+    }
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}

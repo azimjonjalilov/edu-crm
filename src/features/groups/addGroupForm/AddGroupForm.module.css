@@ -1,0 +1,14 @@
+.container {
+  padding: 40px 50px;
+  width: max-content;
+  border-radius: var(--radius);
+  border: 2px solid var(--secondary-clr);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btns {
+  display: flex;
+  gap: 20px;
+}
