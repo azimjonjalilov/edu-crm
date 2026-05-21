@@ -1,6 +1,7 @@
 import styles from "./Input.module.css";
 import { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FaXmark, FaCheck, FaClock, FaMinus } from "react-icons/fa6";
 
 export const InputPassword = ({
   label = "Password",
@@ -85,9 +86,8 @@ export const InputText = ({
 };
 
 export const InputSelectOptions = () => {
-  const [showData, setShowData] = useState([]);
-  const [value, setValue] = useState("");
-  const [isShow, setIsShow] = useState(false);
+  const [name, setName] = useState("");
+  const [filteredData, setFilteredData] = useState(null);
   const teachers = [
     {
       id: 1,
@@ -104,15 +104,25 @@ export const InputSelectOptions = () => {
   ];
 
   useEffect(() => {
-    const filteredData = teachers.filter((teacher) =>
-      teacher.fullname.toLowerCase().includes(value.toLowerCase()),
+    if (name === "") {
+      setFilteredData(null);
+      return;
+    }
+
+    const newData = teachers.filter((teacher) =>
+      teacher.fullname.toLowerCase().includes(name.toLowerCase()),
     );
-    setShowData(filteredData);
-  }, [value]);
+
+    setFilteredData(() =>
+      teachers.filter((teacher) =>
+        teacher.fullname.toLowerCase().includes(name.toLowerCase()),
+      ),
+    );
+  }, [name]);
 
   function handleSelect(teacher) {
-    setValue(teacher.fullname);
-    setIsShow(false);
+    setFilteredData(null);
+    setName(teacher.fullname);
   }
 
   return (
@@ -120,14 +130,89 @@ export const InputSelectOptions = () => {
       <input
         type="search"
         placeholder="search by name"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
-      {isShow && (
+      {filteredData && (
         <ul>
-          {showData.map((teacher) => (
+          {filteredData.map((teacher) => (
             <li key={teacher.id} onClick={() => handleSelect(teacher)}>
               {teacher.fullname}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export const InputAttendance = () => {
+  const [name, setName] = useState(null);
+  const [show, setShow] = useState(false);
+  const statuses = [
+    {
+      id: 1,
+      icon: <FaXmark />,
+      status: true,
+    },
+    {
+      id: 2,
+      icon: <FaCheck />,
+      status: false,
+    },
+    {
+      id: 3,
+      icon: <FaClock />,
+      status: undefined,
+    },
+    {
+      id: 4,
+      icon: <FaMinus />,
+      status: null,
+    },
+  ];
+
+  function handleSelect(status) {
+    setName(status);
+    setShow(false);
+  }
+
+  return (
+    <div className={styles.attendance}>
+      <div onClick={() => setShow(true)}>
+        {name?.status === null ? "" : name?.icon}
+      </div>
+      {show && (
+        <ul>
+          {statuses.map((status) => (
+            <li key={status.id} onClick={() => handleSelect(status)}>
+              {status.icon}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export const InputCoin = () => {
+  const [grade, setGrade] = useState(null);
+  const [show, setShow] = useState(false);
+  const coins = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  function handleSelect(coin) {
+    setGrade(coin);
+    setShow(false);
+  }
+
+  return (
+    <div className={styles.coins}>
+      <div onClick={() => setShow(!show)}>{grade}</div>
+      {show && (
+        <ul>
+          {coins.map((coin) => (
+            <li key={coin} onClick={() => handleSelect(coin)}>
+              {coin}
             </li>
           ))}
         </ul>
