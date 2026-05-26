@@ -32,7 +32,7 @@ const studentsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // getStudents
+      // get students
       .addCase(getStudents.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -42,6 +42,45 @@ const studentsSlice = createSlice({
         state.students = action.payload;
       })
       .addCase(getStudents.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // create student
+      .addCase(createStudent.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createStudent.fulfilled, (state, action) => {
+        state.loading = false;
+        // state.students = action.payload;
+      })
+      .addCase(createStudent.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // update student
+      .addCase(updateStudent.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateStudent.fulfilled, (state, action) => {
+        state.loading = false;
+        // state.students = action.payload;
+      })
+      .addCase(updateStudent.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // delete student
+      .addCase(deleteStudent.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteStudent.fulfilled, (state, action) => {
+        state.loading = false;
+        // state.students = action.payload;
+      })
+      .addCase(deleteStudent.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
