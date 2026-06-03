@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./StudentsOfGroup.module.css";
 import { FaTrash, FaXmark } from "react-icons/fa6";
 import Modal from "../modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { groupByID } from "../../redux/slices/groups/groupsSlice";
 
 const StudentsOfGroup = () => {
   const [showModal, setShowModal] = useState(false);
   const params = useParams();
-  // console.log(params);
+  const dispatch = useDispatch();
+  useEffect(() => {}, [dispatch(groupByID(params.id))]);
 
   const students = [
     {

@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import { links } from "../constants/data";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/slices/authSlice/authSlice";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
   return (
     <nav className={styles.navbar}>
       <ul>
@@ -19,7 +22,7 @@ const Sidebar = () => {
         ))}
       </ul>
 
-      <button>Log out</button>
+      <button onClick={() => dispatch(logout())}>Log out</button>
     </nav>
   );
 };

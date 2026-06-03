@@ -7,11 +7,13 @@ import {
   InputEmail,
 } from "../../components/ui-component/inputs/Input";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../redux/slices/authSlice/authSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -22,8 +24,7 @@ const Login = () => {
       password,
     };
 
-    console.log("login");
-    console.log(user);
+    dispatch(login(user));
 
     setEmail("");
     setPassword("");

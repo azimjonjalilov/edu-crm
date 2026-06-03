@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import TeachersTable from "../../features/teachers/teachersTable/TeachersTable";
 import Modal from "../../components/modal/Modal";
 import { FaXmark } from "react-icons/fa6";
 import AddTeacherForm from "../../features/teachers/addTeacherForm/AddTeacherForm";
+import { useDispatch, useSelector } from "react-redux";
+import { getTeachers } from "../../redux/slices/teachers/teachersSlice";
 
 const Teachers = () => {
   const [searchBy, setSearchBy] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+  const { loading, teachers } = useSelector((state) => state.teachers);
+
+  useEffect(() => {
+    dispatch(getTeachers());
+  }, []);
+
+  if (loading) return <h1>Loading</h1>;
 
   return (
     <>
@@ -21,7 +31,7 @@ const Teachers = () => {
       )}
       <div>
         <Header setSearchBy={setSearchBy} setShowModal={setShowModal} />
-        <TeachersTable searchBy={searchBy} />
+        {teachers && <TeachersTable searchBy={searchBy} teachers={teachers} />}
       </div>
     </>
   );

@@ -5,24 +5,7 @@ import { FaXmark } from "react-icons/fa6";
 import AddStudentForm from "../addStudentForm/AddStudentForm";
 import DeleteForm from "../../../components/deleteForm/DeleteForm";
 
-const students = [
-  {
-    id: 1,
-    fullName: "Eshmatov Toshmat",
-    phone: "+998901234567",
-    coin: 246,
-    group: "ALG-web-123",
-  },
-  {
-    id: 2,
-    fullName: "Soliyev Kamron",
-    phone: "+9989012234325",
-    coin: 123,
-    group: "ALG-web-101",
-  },
-];
-
-const StudentsTable = ({ searchBy }) => {
+const StudentsTable = ({ searchBy, students }) => {
   const [showData, setShowData] = useState(students);
   const [showModal, setShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
@@ -86,7 +69,7 @@ const StudentsTable = ({ searchBy }) => {
                 <td>{student.fullName}</td>
                 <td>{student.phone}</td>
                 <td>{student.coin}</td>
-                <td>{student.group}</td>
+                <td>{student.group?.name}</td>
 
                 <td>
                   <div className={styles.actions}>

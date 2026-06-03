@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import axios from "../../api/axios";
 const initialState = {
   loading: false,
   error: null,
@@ -8,7 +8,15 @@ const initialState = {
 
 export const getTeachers = createAsyncThunk(
   "teachers/getTeachers",
-  async () => {},
+  async () => {
+    try {
+      const res = await axios.get("teachers");
+      return res.data;
+    } catch (error) {
+      console.log(error.message);
+      return "Failed to get teachers data";
+    }
+  },
 );
 
 export const createTeacher = createAsyncThunk(

@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "../../api/axios";
 
 const initialState = {
   loading: false,
@@ -8,7 +9,15 @@ const initialState = {
 
 export const getDashboardInfo = createAsyncThunk(
   "dashboard/getInfo",
-  async () => {},
+  async () => {
+    try {
+      const res = await axios.get("dashboard/stats");
+      return res.data;
+    } catch (error) {
+      console.log(error.message);
+      return "Failed to get data";
+    }
+  },
 );
 
 const dashboardSlice = createSlice({

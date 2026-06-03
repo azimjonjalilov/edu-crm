@@ -1,12 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "../../api/axios";
 
 const initialState = {
   loading: false,
   error: null,
   groups: null,
+  groupByID: null,
 };
 
-export const getGroups = createAsyncThunk("groups/getGroups", async () => {});
+export const getGroups = createAsyncThunk("groups/getGroups", async () => {
+  try {
+    const res = await axios.get("groups");
+    return res.data;
+  } catch (error) {
+    console.log(error.message);
+    return "Failed to get groups data";
+  }
+});
 
 export const createGroup = createAsyncThunk(
   "groups/createGroup",
@@ -23,7 +33,15 @@ export const updateGroup = createAsyncThunk(
   async () => {},
 );
 
-export const groupByID = createAsyncThunk("groups/groupByID", async () => {});
+export const groupByID = createAsyncThunk("groups/groupByID", async (id) => {
+  try {
+    const res = await axios.get(`groups/${id}`);
+    console.log(res.data);
+  } catch (error) {
+    console.log(error.message);
+    return "Failed to get group data";
+  }
+});
 
 const groupsSlice = createSlice({
   name: "groups",
@@ -85,3 +103,5 @@ const groupsSlice = createSlice({
       });
   },
 });
+
+export default groupsSlice.reducer;

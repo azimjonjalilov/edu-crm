@@ -6,24 +6,7 @@ import { FaXmark } from "react-icons/fa6";
 import AddGroupForm from "../addGroupForm/AddGroupForm";
 import DeleteForm from "../../../components/deleteForm/DeleteForm";
 
-const groups = [
-  {
-    id: 1,
-    name: "ALG-web-101",
-    students: 24,
-    teacher: "Turg'unov Hayotbek",
-    speciality: "Frontend",
-  },
-  {
-    id: 2,
-    name: "ALG-web-102",
-    students: 21,
-    teacher: "Ikromov Abdulaziz",
-    speciality: "Backend",
-  },
-];
-
-const GroupsTable = ({ searchBy }) => {
+const GroupsTable = ({ searchBy, groups }) => {
   const [showData, setShowData] = useState(groups);
   const [showModal, setShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
@@ -85,8 +68,8 @@ const GroupsTable = ({ searchBy }) => {
                 <td>
                   <Link to={`${group.id}`}>{group.name}</Link>
                 </td>
-                <td>{group.students}</td>
-                <td>{group.teacher}</td>
+                <td>{group.studentsCount}</td>
+                <td>{group.teacher?.fullName}</td>
                 <td>{group.speciality}</td>
 
                 <td>
